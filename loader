@@ -1,0 +1,18 @@
+local games = {
+    [113290951185459] = "https://raw.githubusercontent.com/phurinthsukhkraphngs-byte/AnimeDice/refs/heads/main/AnimeDice_DiceHub.lua", -- Anime Dice
+    [142823291]       = "https://raw.githubusercontent.com/phurinthsukhkraphngs-byte/MM2/main/mm2script.txt",                   -- Murder Mystery 2
+    [2788229376]      = "https://raw.githubusercontent.com/phurinthsukhkraphngs-byte/Dahoodscript/refs/heads/main/Dahoodscript_obfuscated.lua", -- Da Hood
+    [107778070777162] = "https://raw.githubusercontent.com/phurinthsukhkraphngs-byte/StealanEgg/refs/heads/main/StealanEgg_obfuscated.lua"  -- Steal an egg
+}
+
+local scriptUrl = games[game.PlaceId]
+
+if scriptUrl then
+    loadstring(game:HttpGet(scriptUrl))()
+else
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Hub Loader",
+        Text = "เกมนี้ยังไม่รองรับ (PlaceId: " .. tostring(game.PlaceId) .. ")",
+        Duration = 5
+    })
+end
